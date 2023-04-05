@@ -3,6 +3,7 @@ from keras.utils import img_to_array
 from defect_detection.config import STATIC_FOLDER_PATH
 from defect_detection.utils.prediction import get_predictions
 from werkzeug.utils import secure_filename
+from PIL import Image
 import os
 
 app = Flask(__name__)
@@ -19,16 +20,13 @@ def show_prediction():
     if request.method == 'POST':
         product_type = str(request.form['product'])
         image = request.files['img']
-        img_save_path = os.path.join(STATIC_FOLDER_PATH,
-                                      'input_imgs',
-                                      secure_filename(image.filename))
-        
-        image.save(img_save_path)
-        preds = get_predictions(img_path=img_save_path, product_name=product_type)[0]
+        img = Image.open(image)
+    
+        preds = get_predictions(img=img, product_name=product_type)[0]
 
         print(preds)
 
-        return f"<p>Predictions:{preds}</p>"
+        return f"<p>{preds}</p>"
 
 
 

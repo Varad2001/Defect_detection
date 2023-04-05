@@ -1,1 +1,4 @@
+# ignore large model files
 defect_detection/models/
+# ignore static files
+defect_detection/static
