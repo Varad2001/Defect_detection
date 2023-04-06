@@ -73,7 +73,7 @@ def get_bbox(img, model : keras.models.Model):
 
     return pt1, pt2
     
-
+"""
 img_path = '/home/varad/Work/Projects/Defect_detection/static/input_imgs/_0_1280_20210525_14462_0.jpg'
 img = Image.open(img_path)
 img = img.resize(size = IMAGE_SIZE)
@@ -85,4 +85,4 @@ print(f"Pt 2 : {pt2}")
 
 
 helpers.draw_rectangle(img.resize(size=(8*RESIZE_FACTOR,8*RESIZE_FACTOR)), pt1, pt2)
-
+"""

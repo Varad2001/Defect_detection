@@ -6,9 +6,10 @@ from skimage.transform import resize
 from PIL import Image
 import os
 import cv2
+from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
-from defect_detection.config import IMAGE_SIZE, RESIZE_FACTOR
+from defect_detection.config import IMAGE_SIZE, RESIZE_FACTOR, STATIC_FOLDER_PATH
 
 
 def prepare_input_img(img, IMAGE_SIZE=IMAGE_SIZE):
@@ -49,9 +50,12 @@ def process_final_feature_map(final_feature_map: np.array) :
 
 
 def draw_rectangle(img, pt1, pt2) :
-    img_path = "/home/varad/Work/Projects/Defect_detection/static/output_imgs/output.png"
+    img_name = "final_img.png"
+    img_path = f"{STATIC_FOLDER_PATH}/{img_name}"
     img.save(img_path)
     img1 = cv2.imread(img_path)
     img1 = cv2.rectangle(img1, pt1, pt2, color=(255,0,0))
     cv2.imwrite(filename=img_path,
                 img=img1)
+    
+    return img_name
