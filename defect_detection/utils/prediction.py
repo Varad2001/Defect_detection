@@ -1,8 +1,8 @@
 import keras
 import numpy as np
-from defect_detection.config import SAVED_MODELS, THRESHOLD
+from defect_detection.config import SAVED_MODELS, THRESHOLD, IMAGE_SIZE, RESIZE_FACTOR
 from defect_detection.utils import helpers
-
+from PIL import Image
 
 
 def get_predictions(img, product_name):
@@ -11,9 +11,13 @@ def get_predictions(img, product_name):
     # get the model for the given product
     model = SAVED_MODELS[f"{product_name}_model"]
 
+    # get the probabilies of the anomaly or good classes
     preds = model.predict(img)
 
-    return preds
+    # get the coordinates for the box enclosing the defect
+    pt1 , pt2 = get_bbox(img, model)
+
+    return preds, pt1, pt2
 
 
 def get_bbox(img, model : keras.models.Model):
@@ -25,7 +29,8 @@ def get_bbox(img, model : keras.models.Model):
         model (keras.models.Model): Model trained for the purpose
 
     Returns:
-        Tuple[tuple, tuple] : Returns two tuples 
+        Tuple[tuple, tuple] : Returns two tuples ; first represents the upper left
+        corner and the second one the lower right corner of the rectangle
     """
 
     feature_maps = helpers.get_feature_maps(img, model)
@@ -69,4 +74,15 @@ def get_bbox(img, model : keras.models.Model):
     return pt1, pt2
     
 
+img_path = '/home/varad/Work/Projects/Defect_detection/static/input_imgs/_0_1280_20210525_14462_0.jpg'
+img = Image.open(img_path)
+img = img.resize(size = IMAGE_SIZE)
+probs, pt1, pt2 = get_predictions(img, 'MARBLE')
+
+print(f"Probabilities : {probs}")
+print(f"Point 1 : {pt1}")
+print(f"Pt 2 : {pt2}")
+
+
+helpers.draw_rectangle(img.resize(size=(8*RESIZE_FACTOR,8*RESIZE_FACTOR)), pt1, pt2)
 

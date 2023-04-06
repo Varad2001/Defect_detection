@@ -5,13 +5,15 @@ from keras.models import load_model,Model
 from skimage.transform import resize
 from PIL import Image
 import os
+import cv2
+import matplotlib.pyplot as plt
 import numpy as np
 from defect_detection.config import IMAGE_SIZE, RESIZE_FACTOR
 
 
 def prepare_input_img(img, IMAGE_SIZE=IMAGE_SIZE):
 
-    img = Image.open(img)
+    #img = Image.open(img)
     img = img_to_array(img)
     img = expand_dims(img, axis=0)
     img = preprocess_input(img)
@@ -46,4 +48,10 @@ def process_final_feature_map(final_feature_map: np.array) :
     return normalized_img
 
 
-
+def draw_rectangle(img, pt1, pt2) :
+    img_path = "/home/varad/Work/Projects/Defect_detection/static/output_imgs/output.png"
+    img.save(img_path)
+    img1 = cv2.imread(img_path)
+    img1 = cv2.rectangle(img1, pt1, pt2, color=(255,0,0))
+    cv2.imwrite(filename=img_path,
+                img=img1)
