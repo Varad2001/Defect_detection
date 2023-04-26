@@ -1,7 +1,7 @@
 flask==2.2.3
 tensorflow-cpu
 scikit-image
-cv2==4.6.0
+opencv-python
 matplotlib==3.7.1
 numpy
 pandas
