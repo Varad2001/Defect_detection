@@ -23,14 +23,22 @@ def show_prediction():
         image = request.files['img']
         img = Image.open(image)
 
+        img_size = int(request.form['img_size'])
+        IMAGE_SIZE = (img_size, img_size)
+        
         img = img.resize(IMAGE_SIZE)
         probs, pt1, pt2 = get_predictions(img, product_type)
 
-        img_name = helpers.draw_rectangle(img.resize(size=(8*RESIZE_FACTOR,8*RESIZE_FACTOR)), pt1, pt2)
+        result = "Defective" if probs[0][0] > probs[0][1] else "Non defective"
 
-        # probs = f"Defective : {probs[0]} <br> Good : {probs[1]}"
+        if result=='Defective' :
+            img_name = helpers.draw_rectangle(img.resize(size=(8*RESIZE_FACTOR,8*RESIZE_FACTOR)), pt1, pt2)
+            return render_template('result.html', probs=probs, img_name = img_name, result=result)
+        else :
+            return render_template('result.html', probs=probs, result=result)
+        
 
-        return render_template('result.html', probs=probs, img_name = img_name)
+        
 
 
 

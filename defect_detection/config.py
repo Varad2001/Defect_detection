@@ -1,14 +1,15 @@
 import sys,os
 from keras.models import load_model
 
+print("Running config.py ....")
 
-IMAGE_SIZE = (128,128)
+IMAGE_SIZE = (256,256)
 
 MODELS_PATH = os.path.join(os.getcwd(), 'defect_detection' , 'models')
 
 STATIC_FOLDER_PATH = os.path.join(os.getcwd(), 'static')
 
-RESIZE_FACTOR = 8
+RESIZE_FACTOR = 16
 
 THRESHOLD = 0.7
 

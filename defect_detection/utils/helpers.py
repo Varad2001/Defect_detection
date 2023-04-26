@@ -24,7 +24,10 @@ def prepare_input_img(img, IMAGE_SIZE=IMAGE_SIZE):
 
 def get_feature_maps(img, model:Model) :
     # get the vgg layer from the model
-    vgg_layer = model.get_layer(name='vgg16')
+    try :
+        vgg_layer = model.get_layer(name='vgg16')
+    except :
+        vgg_layer = model.get_layer(name='vgg19')
 
     # define model to extract the feature maps
     feature_map_model = Model(
@@ -39,7 +42,7 @@ def get_feature_maps(img, model:Model) :
 def process_final_feature_map(final_feature_map: np.array) :
 
     shape1 = final_feature_map.shape[0] * RESIZE_FACTOR
-    
+    shape1 = 128
     # resize the feature map/img
     resized_img = resize(final_feature_map , (shape1, shape1))
 

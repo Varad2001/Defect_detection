@@ -1,11 +1,25 @@
 <html>
     <body>
+        <br>
+
+        <div>
+            <h2>Result : {{ result }} </h2>
+        </div>
+
+        <br>
+
         <div>
         Probabilities : <br>
-        {{ probs }}
-    </div>
+        Defective : {{ probs[0][0] }}   <br>
+        Good : {{ probs[0][1] }}   <br>
+        </div>
+    
+        <br>
+    {% if result=='Defective' %}
     <div>
         <img src="static/{{img_name}}">
     </div>
+    {% endif %}
+
     </body>
 </html>
