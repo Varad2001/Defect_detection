@@ -1,8 +1,8 @@
 flask==2.2.3
 tensorflow-cpu
 scikit-image
-cv2
-matplotlib
+cv2==4.6.0
+matplotlib==3.7.1
 numpy
 pandas
 PIL
