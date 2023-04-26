@@ -1,7 +1,7 @@
 flask==2.2.3
 tensorflow-cpu
 scikit-image
-libgl1
+libgl1-mesa-glx
 opencv-python
 matplotlib
 numpy
