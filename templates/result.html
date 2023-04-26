@@ -1,6 +1,11 @@
 <html>
     <body>
         <br>
+        <div>
+            <h2>Input image : </h2>
+            <br>
+            <img src="static/input_img.png" width="350" height="350">
+        </div>
 
         <div>
             <h2>Result : {{ result }} </h2>
@@ -17,7 +22,7 @@
         <br>
     {% if result=='Defective' %}
     <div>
-        <img src="static/{{img_name}}">
+        <img src="static/{{img_name}}" width="200" height="200">
     </div>
     {% endif %}
 

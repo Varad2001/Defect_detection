@@ -6,10 +6,20 @@ from PIL import Image
 
 
 def get_predictions(img, product_name):
-    img = helpers.prepare_input_img(img)
 
     # get the model for the given product
     model = SAVED_MODELS[f"{product_name}_model"]
+
+    # get the input img shape from the model
+    input_layer = model.layers[0]
+    img_size = input_layer.input.get_shape()[1]
+    IMAGE_SIZE = (img_size, img_size)
+
+
+    img = img.resize(IMAGE_SIZE)
+    img = helpers.prepare_input_img(img)
+
+    
 
     # get the probabilies of the anomaly or good classes
     preds = model.predict(img)

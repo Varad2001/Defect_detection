@@ -41,8 +41,10 @@ def get_feature_maps(img, model:Model) :
 
 def process_final_feature_map(final_feature_map: np.array) :
 
-    shape1 = final_feature_map.shape[0] * RESIZE_FACTOR
-    shape1 = 128
+    # shape1 = final_feature_map.shape[0] * RESIZE_FACTOR 
+    shape1=64
+    
+    
     # resize the feature map/img
     resized_img = resize(final_feature_map , (shape1, shape1))
 

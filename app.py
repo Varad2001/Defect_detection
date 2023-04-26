@@ -21,12 +21,14 @@ def show_prediction():
     if request.method == 'POST':
         product_type = str(request.form['product'])
         image = request.files['img']
+        image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
+
         img = Image.open(image)
 
-        img_size = int(request.form['img_size'])
-        IMAGE_SIZE = (img_size, img_size)
+        # img_size = int(request.form['img_size'])
+        # IMAGE_SIZE = (img_size, img_size)
         
-        img = img.resize(IMAGE_SIZE)
+        # img = img.resize(IMAGE_SIZE)
         probs, pt1, pt2 = get_predictions(img, product_type)
 
         result = "Defective" if probs[0][0] > probs[0][1] else "Non defective"
