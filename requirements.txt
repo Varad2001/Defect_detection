@@ -1,6 +1,6 @@
 flask==2.2.3
 tensorflow-cpu
-skimage
+scikit-image
 cv2
 matplotlib
 numpy
