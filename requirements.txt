@@ -1,2 +1,8 @@
 flask==2.2.3
-tensorflow==2.11.0
+tensorflow-cpu
+skimage
+cv2
+matplotlib
+numpy
+pandas
+PIL
