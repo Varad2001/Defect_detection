@@ -29,7 +29,7 @@ def show_prediction():
         # IMAGE_SIZE = (img_size, img_size)
         
         # img = img.resize(IMAGE_SIZE)
-        probs, pt1, pt2 = get_predictions(img, product_type)
+        probs, pt1, pt2  = get_predictions(img, product_type)
 
         result = "Defective" if probs[0][0] > probs[0][1] else "Non defective"
 

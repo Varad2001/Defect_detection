@@ -1,14 +1,15 @@
 import keras
 import numpy as np
-from defect_detection.config import SAVED_MODELS, THRESHOLD, IMAGE_SIZE, RESIZE_FACTOR
+from defect_detection.config import SAVED_MODELS, THRESHOLD, STATIC_FOLDER_PATH
 from defect_detection.utils import helpers
 from PIL import Image
+import matplotlib.pyplot as plt
 
 
 def get_predictions(img, product_name):
 
     # get the model for the given product
-    model = SAVED_MODELS[f"{product_name}_model"]
+    model = SAVED_MODELS[f"{product_name.upper()}"]
 
     # get the input img shape from the model
     input_layer = model.layers[0]
@@ -80,8 +81,12 @@ def get_bbox(img, model : keras.models.Model):
     pt1 = (x_0, y_0)
     pt2 = (x_1, y_1)
 
+    #img = Image.fromarray(defect_img, mode="L")
+    #img.save(f"{STATIC_FOLDER_PATH}/resultant_img.jpeg")
+    plt.imsave(f"{STATIC_FOLDER_PATH}/resultant_img.jpeg", final_feature_map, cmap='gray')
+    plt.imsave(f"{STATIC_FOLDER_PATH}/defect_img.jpeg", defect_img, cmap='gray')
 
-    return pt1, pt2
+    return pt1, pt2 
     
 """
 img_path = '/home/varad/Work/Projects/Defect_detection/static/input_imgs/_0_1280_20210525_14462_0.jpg'

@@ -25,7 +25,7 @@ def get_saved_models(MODELS_PATH=MODELS_PATH):
 
     for model_file in model_files:
         model = load_model(os.path.join(MODELS_PATH, model_file))
-        product_name = model_file.split('.h5')[0]
+        product_name = (model_file.split('.h5')[0]).upper()
         saved_models[product_name] = model
 
     return saved_models

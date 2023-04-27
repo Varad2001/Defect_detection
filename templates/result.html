@@ -22,7 +22,18 @@
         <br>
     {% if result=='Defective' %}
     <div>
+        <h2>Image with bounding box : </h2><br>
         <img src="static/{{img_name}}" width="200" height="200">
+    </div>
+    <br>
+    <div>
+        <h2>Final feature map : </h2><br>
+        <img src="static/resultant_img.jpeg" width="200" height="200">
+    </div>
+    <br>
+    <div>
+        <h2>Image after applying threshold : </h2><br>
+        <img src="static/defect_img.jpeg" width="200" height="200">
     </div>
     {% endif %}
 
