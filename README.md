@@ -10,6 +10,10 @@ The dataset provided for training includes two sets of images: good and anomaly.
 2. Then add the Global Average pooling 2d layer on top.
 3. Next, add a dense layer with only one unit followed by the output layer with two units for two outcomes: good and anomaly.
 4.  The architecture looks like follows : 
+<picture>
+ <source media="(prefers-color-scheme: light)" srcset="YOUR-LIGHTMODE-IMAGE">
+ <img alt="YOUR-ALT-TEXT" src="/assets/images/summary.png">
+</picture>
  
 
 			
