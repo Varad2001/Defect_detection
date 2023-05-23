@@ -10,7 +10,7 @@ The dataset provided for training includes two sets of images: good and anomaly.
 2. Then add the Global Average pooling 2d layer on top.
 3. Next, add a dense layer with only one unit followed by the output layer with two units for two outcomes: good and anomaly.
 4.  The architecture looks like follows : 
-5.  
+
 <picture>
  <img alt="Architecture summary" src="/assets/images/summary.png">
 </picture>
@@ -88,9 +88,15 @@ This architecture makes it easy to add explainability to our model. The VGG bloc
 
 
 
-
-Note : 
-This project was made to particularly demonstrate the particular approach mentioned and not for production line. Hence, tools like machine learning pipelines, data augmentation and transformation approaches, deployment, etc. have not been used. The production ready complete system will be made available once ready.
-
 ### References 
+
+This project is inspired by this awesome article from Olga Chernytska : 
+
+Explainable Defect Detection Using Convolutional Neural Networks - Case Study : https://towardsdatascience.com/explainable-defect-detection-using-convolutional-neural-networks-case-study-284e57337b59
+
+
+<hr>
+
+Note - : 
+This project was made to particularly demonstrate the particular approach mentioned and not for production line. Hence, tools like machine learning pipelines, data augmentation and transformation approaches, deployment, etc. have not been used here. The production ready complete system can be developed using the tools mentioned and can then be deployed to production in industries.
 
