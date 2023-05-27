@@ -19,12 +19,13 @@ def hello():
 def show_prediction():
 
     print("show_prediction() method running....")
-    return "<p>Success</p>"
+    
 
-    """if request.method == 'POST':
+    if request.method == 'POST':
         product_type = str(request.form['product'])
+        return "<p>Success</p>"
 
-        image = request.files['img']
+        """image = request.files['img']
         if image:
             image = request.files['img']
             image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
