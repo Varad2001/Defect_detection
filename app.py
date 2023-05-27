@@ -25,10 +25,11 @@ def show_prediction():
         product_type = str(request.form['product'])
         
 
-        image = request.files['img']
+        #image = request.files['img']
+        image = None
         
     
-        if image:
+        if image != None:
             image = request.files['img']
             image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
 
@@ -42,7 +43,7 @@ def show_prediction():
         # IMAGE_SIZE = (img_size, img_size)
         
         # img = img.resize(IMAGE_SIZE)
-        return "<p>Success</p>"
+        
     
         """probs, pt1, pt2  = get_predictions(img, product_type)
 
