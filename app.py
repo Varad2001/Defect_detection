@@ -26,9 +26,9 @@ def show_prediction():
         
 
         image = request.files['img']
-        return "<p>Success</p>"
+        
     
-        """if image:
+        if image:
             image = request.files['img']
             image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
 
@@ -42,7 +42,9 @@ def show_prediction():
         # IMAGE_SIZE = (img_size, img_size)
         
         # img = img.resize(IMAGE_SIZE)
-        probs, pt1, pt2  = get_predictions(img, product_type)
+        return "<p>Success</p>"
+    
+        """probs, pt1, pt2  = get_predictions(img, product_type)
 
         result = "Defective" if probs[0][0] > probs[0][1] else "Non defective"
 
