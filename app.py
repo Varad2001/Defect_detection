@@ -39,7 +39,7 @@ def show_prediction():
             img = Image.open(f"{STATIC_FOLDER_PATH}/{img_name}")
             img.save(f"{STATIC_FOLDER_PATH}/input_img.png")
 
-            return "<p>success</p>"
+            
 
         # img_size = int(request.form['img_size'])
         # IMAGE_SIZE = (img_size, img_size)
@@ -47,9 +47,10 @@ def show_prediction():
         # img = img.resize(IMAGE_SIZE)
         
     
-        """probs, pt1, pt2  = get_predictions(img, product_type)
+        probs, pt1, pt2  = get_predictions(img, product_type)
+        return "<p>success</p>"
 
-        result = "Defective" if probs[0][0] > probs[0][1] else "Non defective"
+        """result = "Defective" if probs[0][0] > probs[0][1] else "Non defective"
 
         if result=='Defective' :
             img_name = helpers.draw_rectangle(img.resize(size=(8*RESIZE_FACTOR,8*RESIZE_FACTOR)), pt1, pt2)
