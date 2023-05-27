@@ -19,20 +19,11 @@ def hello():
 def show_prediction():
 
     print("show_prediction() method running....")
+    return "<p>Success</p>"
 
-    if request.method == 'POST':
+    """if request.method == 'POST':
         product_type = str(request.form['product'])
 
-        """if request.form['img_type'] != 'custom_img':
-            img_name = request.form['img_type']
-            img = Image.open(f"{STATIC_FOLDER_PATH}/{img_name}")
-            img.save(f"{STATIC_FOLDER_PATH}/input_img.png")
-
-        else : 
-            image = request.files['img']
-            image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
-
-            img = Image.open(image)"""
         image = request.files['img']
         if image:
             image = request.files['img']
@@ -56,7 +47,8 @@ def show_prediction():
             img_name = helpers.draw_rectangle(img.resize(size=(8*RESIZE_FACTOR,8*RESIZE_FACTOR)), pt1, pt2)
             return render_template('result.html', probs=probs, img_name = img_name, result=result)
         else :
-            return render_template('result.html', probs=probs, result=result)
+            return render_template('result.html', probs=probs, result=result)"""
+        
         
 
 @app.route("/test")
