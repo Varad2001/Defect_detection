@@ -1,5 +1,6 @@
 import sys,os
 from keras.models import load_model
+import gdown
 
 print("Running config.py ....")
 
@@ -13,6 +14,21 @@ RESIZE_FACTOR = 8
 
 THRESHOLD = 0.7
 
+MODEL_DRIVE_IDS = {
+    'bangle' : '1GZ-0YMxLOaLnHz1hB8GJR3SkCQmuyOx3'
+    }
+
+
+def download_models():
+    print("Downloading the models...")
+    for model_name, id in MODEL_DRIVE_IDS.items():
+        gdown.download(
+            url = f'https://drive.google.com/uc?id={id}',
+            output=f'{MODELS_PATH}/{model_name}.h5',
+            quiet=False
+        )
+        print(f"Download complete for {model_name}.h5...")
+    print("All downloads complete. ")
 
 
 def get_saved_models(MODELS_PATH=MODELS_PATH):
@@ -30,14 +46,9 @@ def get_saved_models(MODELS_PATH=MODELS_PATH):
 
     return saved_models
 
-   
+
+download_models()  
+
 SAVED_MODELS = get_saved_models(MODELS_PATH=MODELS_PATH)
 
-"""print(SAVED_MODELS)
 
-model = SAVED_MODELS['BANGLE_model']
-for layer in model.layers:
-    print(layer)
-
-input_layer = model.layers[0]
-print(input_layer.input.get_shape()[1])"""
