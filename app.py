@@ -18,6 +18,8 @@ def hello():
 @app.route("/predict", methods=['GET', 'POST'])
 def show_prediction():
 
+    print("show_prediction() method running....")
+
     if request.method == 'POST':
         product_type = str(request.form['product'])
         image = request.files['img']
@@ -40,7 +42,9 @@ def show_prediction():
             return render_template('result.html', probs=probs, result=result)
         
 
-        
+@app.route("/test")
+def test():
+    return "<p>Working fine. </p>"
 
 
 
