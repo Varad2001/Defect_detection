@@ -20,6 +20,7 @@ MODEL_DRIVE_IDS = {
 
 
 def download_models():
+    os.makedirs(MODELS_PATH, exist_ok=True)
     print("Downloading the models...")
     for model_name, id in MODEL_DRIVE_IDS.items():
         gdown.download(
