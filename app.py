@@ -22,10 +22,27 @@ def show_prediction():
 
     if request.method == 'POST':
         product_type = str(request.form['product'])
-        image = request.files['img']
-        image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
 
-        img = Image.open(image)
+        """if request.form['img_type'] != 'custom_img':
+            img_name = request.form['img_type']
+            img = Image.open(f"{STATIC_FOLDER_PATH}/{img_name}")
+            img.save(f"{STATIC_FOLDER_PATH}/input_img.png")
+
+        else : 
+            image = request.files['img']
+            image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
+
+            img = Image.open(image)"""
+        image = request.files['img']
+        if image:
+            image = request.files['img']
+            image.save(f"{STATIC_FOLDER_PATH}/input_img.png")
+
+            img = Image.open(image)
+        else :
+            img_name = request.form['img_type']
+            img = Image.open(f"{STATIC_FOLDER_PATH}/{img_name}")
+            img.save(f"{STATIC_FOLDER_PATH}/input_img.png")
 
         # img_size = int(request.form['img_size'])
         # IMAGE_SIZE = (img_size, img_size)
