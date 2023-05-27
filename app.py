@@ -39,6 +39,8 @@ def show_prediction():
             img = Image.open(f"{STATIC_FOLDER_PATH}/{img_name}")
             img.save(f"{STATIC_FOLDER_PATH}/input_img.png")
 
+            return "<p>success</p>"
+
         # img_size = int(request.form['img_size'])
         # IMAGE_SIZE = (img_size, img_size)
         
